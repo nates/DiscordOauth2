@@ -25,6 +25,18 @@ class discordOauth {
     }
 
     /**
+     * Redirect user to Discord's revocation page.
+     * @return void
+     */
+    public function logout() {
+        $parameters = array('client_id' => $this->oauth_client_id, 'client_secret' => $this->oauth_client_secret, 'token' => $_SESSION['access_token']);
+        $this->curl('https://discordapp.com/api/oauth2/token/revoke');
+        unset($_SESSION['access_token']);
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        die();
+    }
+
+    /**
      * Redirect user to Discord's authorization page.
      * @return string
      */
@@ -49,6 +61,7 @@ class discordOauth {
         $token = $this->curl('https://discord.com/api/oauth2/token', $parameters);
         if(isset($token->access_token)) $_SESSION['access_token'] = $token->access_token;
         header('Location: ' . $_SERVER['PHP_SELF']);
+        die();
     }
 
     /**
@@ -59,7 +72,7 @@ class discordOauth {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        
+
         if($params) curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
 
         $headers = array('Accept: application/json');
