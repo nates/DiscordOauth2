@@ -37,8 +37,7 @@ class discordOauth {
      * @return bool
      */
     public function loggedIn() {
-        if(isset($_SESSION['access_token'])) return true;
-        return false;
+        return isset($_SESSION['access_token']);
     }
 
     /**
