@@ -12,6 +12,9 @@ if(isset($_GET['code'])) {
 if(!$discord->loggedIn()) {
     $discord->login();
 } else {
+    if(isset($_GET['logout'])) {
+        $discord->logout();
+    }
     $user = $discord->getUser();
     var_dump($user);
 }
