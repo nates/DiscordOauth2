@@ -1,6 +1,7 @@
 # DiscordOAuth2
 An easy to use Discord Oauth2 PHP class. An example of this being used is for a website to integrate a Discord login system.
 
+## Example usage
 ```php
 require('discordOAuth.php');
 
