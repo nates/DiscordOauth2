@@ -16,6 +16,8 @@ if(!$discord->loggedIn()) {
         $discord->logout();
     }
     $user = $discord->getUser();
+    $guilds = $discord->getGuilds();
     var_dump($user);
+    var_dump($guilds);
 }
 ?>
