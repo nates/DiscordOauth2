@@ -39,7 +39,7 @@ class discordOauth {
     /**
      * Returns a user's info.
      * Requires the identify scope.
-     * @return string
+     * @return array
      */
     public function getUser() {
         return $this->curl('https://discord.com/api/users/@me');
@@ -48,7 +48,7 @@ class discordOauth {
     /**
      * Returns a user's guilds.
      * Requires the guilds scope.
-     * @return string
+     * @return array
      */
     public function getGuilds() {
         return $this->curl('https://discord.com/api/users/@me/guilds');
